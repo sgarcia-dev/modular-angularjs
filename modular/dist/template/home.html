@@ -1,4 +1,13 @@
 <div class="container">
-	<h3>Welcome to Home!</h3>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi consequuntur cupiditate dolores est, eum fugit incidunt mollitia, officiis ratione rerum sed, sit soluta! Ea harum illo magni sit veniam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci, asperiores cum debitis deserunt excepturi facilis ipsum minima nam nobis porro, provident quae quam quis, quisquam quo reprehenderit veritatis voluptas?</p>
+	<form ng-submit="homeCtrl.createTodo()">
+		<div class="form-group col-xs-12">
+			<label for="todoTxt" class="col-sm-2 control-label">TodoTxt</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="todoTxt" placeholder="Insert new todo here" ng-model="homeCtrl.newTodoTxt">
+			</div>
+		</div>
+	</form>
+	<br>
+	<todo class="col-xs-12" content="{{todo.content}}" date="{{todo.date}}" id="{{todo.id}}"
+		  ng-repeat="todo in homeCtrl.todos track by $index"></todo>
 </div>

@@ -1,0 +1,1 @@
+angular.module('myApp.todo', ['myApp.common']);
