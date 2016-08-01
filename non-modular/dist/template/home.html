@@ -1,0 +1,13 @@
+<div class="container">
+	<form ng-submit="homeCtrl.createTodo()">
+		<div class="form-group col-xs-12">
+			<label for="todoTxt" class="col-sm-2 control-label">TodoTxt</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="todoTxt" placeholder="Insert new todo here" ng-model="homeCtrl.newTodoTxt">
+			</div>
+		</div>
+	</form>
+	<br>
+	<todo class="col-xs-12" content="{{todo.content}}" date="{{todo.date}}" id="{{todo.id}}"
+		  ng-repeat="todo in homeCtrl.todos track by $index"></todo>
+</div>

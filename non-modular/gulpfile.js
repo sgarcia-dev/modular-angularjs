@@ -1,12 +1,8 @@
 var gulp = require('gulp'),
 	flatten = require('gulp-flatten'),
 	concat = require('gulp-concat'),
-	browserify = require('browserify'),
-	vinylBuffer = require('vinyl-buffer'),
-	vinylSourceStream = require('vinyl-source-stream'),
 	del = require('del'),
-	runSequence = require('run-sequence'),
-	gutil = require('gulp-util');
+	runSequence = require('run-sequence');
 
 gulp.task('default', function() {
 	runSequence('clean', ['bundle-css', 'bundle-js', 'copy-html'])
@@ -16,22 +12,14 @@ gulp.task('clean', function(done) {
 	return del('dist/**')
 });
 
-gulp.task('bundle-js', function(done) {
-	browserify('src/index.js', {
-		cache: {},
-		packageCache: {}
-	}).bundle()
-		.on('end', function () {
-			gutil.log('Browserify: Bundling completed.');
-			done();
-		})
-		.on('error', function (err) {
-			gutil.log('Browserify: Error encountered:\n', err);
-			done();
-		})
-		.pipe(vinylSourceStream('bundle.js'))
-		.pipe(vinylBuffer())
-		.pipe(gulp.dest('dist'));
+gulp.task('bundle-js', function() {
+	gulp.src(['node_modules/angular/angular.js',
+		'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+		'src/**/*.module.js',
+		'src/app.js',
+		'src/**/*.js'])
+		.pipe(concat('bundle.js'))
+		.pipe(gulp.dest('dist'))
 });
 
 gulp.task('bundle-css', function() {

@@ -1,1 +1,0 @@
-angular.module('myApp.home', ['myApp.common', 'myApp.todo']);

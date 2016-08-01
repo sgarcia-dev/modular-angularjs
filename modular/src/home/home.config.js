@@ -1,10 +1,10 @@
-angular.module('myApp.home')
-	.config(['$stateProvider',
-		function ($stateProvider) {
-			$stateProvider.state('home', {
-				url: "/home",
-				templateUrl: "template/home.html",
-				controller: 'homeController',
-				controllerAs: 'homeCtrl'
-			});
-		}]);
+function homeConfig($stateProvider) {
+	$stateProvider.state('home', {
+		url: "/home",
+		templateUrl: "template/home.html",
+		controller: 'homeController',
+		controllerAs: 'homeCtrl'
+	});
+}
+
+module.exports = homeConfig;
