@@ -1,9 +1,9 @@
-function homeController(todoService) {
-	this.message = 'hello world from controller';
-	this.todos = todoService.todos;
+function homeController(todoFactory) {
+	this.newTodoTxt = '';
+	this.todos = todoFactory.todos;
 
 	this.createTodo = function() {
-		todoService.addTodo(this.newTodoTxt);
+		todoFactory.addTodo(this.newTodoTxt);
 		this.newTodoTxt = '';
 	}
 }

@@ -6,10 +6,16 @@ var gulp = require('gulp'),
 	vinylSourceStream = require('vinyl-source-stream'),
 	del = require('del'),
 	runSequence = require('run-sequence'),
-	gutil = require('gulp-util');
+	gutil = require('gulp-util'),
+	mocha = require('gulp-mocha');
 
 gulp.task('default', function() {
 	runSequence('clean', ['bundle-css', 'bundle-js', 'copy-html'])
+});
+
+gulp.task('test', function () {
+	gulp.src('test/index.js')
+		.pipe(mocha());
 });
 
 gulp.task('clean', function(done) {
