@@ -14,21 +14,15 @@
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8",
-    "brfs": "^1.4.3",
-    "browserify": "^13.1.0",
     "chai": "^3.5.0",
     "del": "^2.2.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-mocha": "^2.2.0",
-    "jsdom": "^9.4.1",
     "karma": "^1.1.2",
-    "karma-browserify": "^5.1.0",
     "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^1.0.1",
     "karma-mocha": "^1.1.1",
     "karma-phantomjs-launcher": "^1.0.1",
-    "run-sequence": "^1.2.2",
-    "watchify": "^3.7.0"
+    "run-sequence": "^1.2.2"
   }
 }
