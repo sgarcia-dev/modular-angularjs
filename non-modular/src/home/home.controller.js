@@ -1,10 +1,10 @@
 angular.module('myApp.home')
-	.controller('homeController', ['todoFactory', function(todoService) {
+	.controller('homeController', ['todoFactory', function(todoFactory) {
 		this.message = 'hello world from controller';
-		this.todos = todoService.todos;
+		this.todos = todoFactory.todos;
 
 		this.createTodo = function() {
-			todoService.addTodo(this.newTodoTxt);
+			todoFactory.addTodo(this.newTodoTxt);
 			this.newTodoTxt = '';
 		}
 	}]);

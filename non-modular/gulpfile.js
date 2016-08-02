@@ -3,19 +3,24 @@ var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	del = require('del'),
 	runSequence = require('run-sequence'),
-	mocha = require('gulp-mocha');
+	karmaServer = require('karma').Server;
 
 gulp.task('default', function() {
 	runSequence('clean', ['bundle-css', 'bundle-js', 'copy-html'])
 });
 
-gulp.task('test', function() {
-	return gulp.src('test/index.js', {read: false})
-		.pipe(mocha());
+gulp.task('test', function(done) {
+	new karmaServer({
+		configFile: __dirname + '/karma.conf.js',
+		singleRun: true
+	}, function(exitcode) {
+		console.log('Karma tests completed with exitcode: ' + exitcode);
+		done();
+	}).start();
 });
 
 gulp.task('clean', function(done) {
-	return del('dist/**')
+	del('dist/**').then(done);
 });
 
 gulp.task('bundle-js', function() {
@@ -25,7 +30,7 @@ gulp.task('bundle-js', function() {
 		'src/app.js',
 		'src/**/*.js'])
 		.pipe(concat('bundle.js'))
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest('dist'));
 });
 
 gulp.task('bundle-css', function() {
